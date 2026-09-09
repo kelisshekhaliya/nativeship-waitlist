@@ -76,11 +76,11 @@ export default function Home() {
 
         <p className="intro">
           <a href="https://x.com/KelisShekhaliya" target="_blank" rel="noreferrer">
-            Kelis
+            @Kelis
           </a>{" "}
           and{" "}
           <a href="https://x.com/bhshekhaliya" target="_blank" rel="noreferrer">
-            Bhavy
+            @Bhavy
           </a>{" "}
           are building something awesome here...
         </p>

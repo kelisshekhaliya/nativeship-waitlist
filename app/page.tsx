@@ -82,7 +82,7 @@ export default function Home() {
           <a href="https://x.com/bhshekhaliya" target="_blank" rel="noreferrer">
             @Bhavy
           </a>{" "}
-          are building something awesome here...
+          are cooking something awesome here...
         </p>
 
         <form className="waitlist-form" onSubmit={handleSubmit}>

@@ -5,9 +5,9 @@ import { FormEvent, useEffect, useState } from "react";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-const BASE_WAITLIST_COUNT = 3;
-const BASE_WAITLIST_AT = Date.parse("2026-09-09T15:08:00.000Z");
-const HOURLY_INCREMENTS = [1, 2, 3] as const;
+const BASE_WAITLIST_COUNT = 31;
+const BASE_WAITLIST_AT = Date.parse("2026-09-12T12:30:00.000Z");
+const WAITLIST_INCREMENT_INTERVAL = 3 * 60 * 60 * 1000;
 
 export default function Home() {
   const [email, setEmail] = useState("");
@@ -134,16 +134,6 @@ export default function Home() {
 }
 
 function calculateWaitlistCount(now: number) {
-  const elapsedHours = Math.max(0, Math.floor((now - BASE_WAITLIST_AT) / 3_600_000));
-  let count = BASE_WAITLIST_COUNT;
-
-  for (let hour = 1; hour <= elapsedHours; hour += 1) {
-    count += HOURLY_INCREMENTS[pickIncrementIndex(hour)];
-  }
-
-  return count;
-}
-
-function pickIncrementIndex(hour: number) {
-  return Math.abs(Math.sin(hour * 9301 + 49297) * 233280) % HOURLY_INCREMENTS.length | 0;
+  const elapsedIntervals = Math.max(0, Math.floor((now - BASE_WAITLIST_AT) / WAITLIST_INCREMENT_INTERVAL));
+  return BASE_WAITLIST_COUNT + elapsedIntervals;
 }
